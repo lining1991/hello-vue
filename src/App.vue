@@ -2,7 +2,9 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/done">已完成</router-link>
+      <router-link to="/calendar">日历</router-link>
+      <router-link to="/mine">关于</router-link>
     </div>
     <router-view/>
   </div>

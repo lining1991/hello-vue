@@ -1,25 +1,39 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './views/Home.vue';
-
+import Calendar from './views/Calendar.vue';
+import Done from './views/Done.vue';
+import List from './views/List.vue';
+import Mine from './views/Mine.vue';
 Vue.use(Router);
 
+// name是有什么用呢
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home,
+      name: 'List',
+      component: List,
     },
     {
-      path: '/about',
-      name: 'about',
+      path: '/calendar',
+      name: 'Calendar',
+      component: Calendar,
+    },
+    {
+      path: '/done',
+      name: 'Done',
+      component: Done,
+    },
+    {
+      path: '/mine',
+      name: 'Mine',
+      component: Mine,
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
+      // 这个是异步的吗component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
     },
   ],
 });
