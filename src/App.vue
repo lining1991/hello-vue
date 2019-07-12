@@ -1,13 +1,21 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <Form></Form>
+    <Display></Display>
   </div>
 </template>
-
+<script>
+import Display from './components/Display';
+import Form from './components/Form';
+// import Vue from 'vue';
+// Vue.use()
+export default {
+  components: {
+    Form,
+    Display,
+  },
+};
+</script>
 <style lang="scss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
