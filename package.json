@@ -4,7 +4,7 @@
   "description": "## Project setup ``` npm install ```",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --open"
+    "start": "webpack-dev-server --open --config=config/webpack.base.config.js"
   },
   "repository": {
     "type": "git",
