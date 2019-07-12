@@ -1,6 +1,6 @@
 const path = require('path');
 // const webpack
-module.export = {
+module.exports = {
     mode: 'development',
     devServer: {
         port: 8084
