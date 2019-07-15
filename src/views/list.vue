@@ -3,3 +3,8 @@
         这是首页也是列表页面
     </div>   
 </template>
+<script>
+export default {
+    
+}
+</script>

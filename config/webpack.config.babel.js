@@ -1,5 +1,6 @@
-const path = require('path');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
+import Path from 'path';
+import VueLoaderPlugin from 'vue-loader/lib/plugin';
+import autoprefixer from 'autoprefixer';
 // VueLoaderPlugin负责拷贝你已经定义的其他rules,然后应用到.vue的各个相关block 比方说<script>
 // const webpack
 module.exports = {
@@ -12,7 +13,7 @@ module.exports = {
     },
     output: {
         filename: '[name].[hash:7].js',
-        path: path.resolve(__dirname, 'dist')
+        path: Path.resolve(__dirname, 'dist')
     },
     resolve: {
         extensions: ['.js', '.ts', '.vue', '.tsx', '.json']
@@ -20,8 +21,14 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/
+            },
+            {
                 test: /.tsx?$/,
-                loader: 'awesome-typescript-loader'
+                // loader: 'awesome-typescript-loader',
+                exclude: /node_modules/
             },
             {
                 test: /.vue$/,

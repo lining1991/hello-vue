@@ -4,7 +4,7 @@
   "description": "## Project setup ``` npm install ```",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --config config/webpack.base.config.js"
+    "start": "webpack-dev-server --config config/webpack.config.babel.js"
   },
   "repository": {
     "type": "git",
@@ -22,8 +22,17 @@
     "vuex": "^3.1.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.5.4",
+    "@babel/plugin-transform-runtime": "^7.5.0",
+    "@babel/preset-env": "^7.5.4",
+    "@babel/preset-typescript": "^7.3.3",
+    "@babel/runtime": "^7.5.4",
+    "autoprefixer": "^9.6.1",
     "awesome-typescript-loader": "^5.2.1",
+    "babel-loader": "^8.0.6",
     "css-loader": "^3.0.0",
+    "node-sass": "^4.12.0",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
     "source-map-loader": "^0.2.4",
