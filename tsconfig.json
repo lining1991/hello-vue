@@ -3,12 +3,12 @@
         // "outDir": "./dist/",
         // "sourceMap": true,
         // "noImplicitAny": true,
-        // "module": "commonjs",
+        "module": "es2015",
         "target": "es5",
         "strict": true,
-        "module"
-    },
-    "include": [
-        "./src/**/*"
-    ]
+        "moduleResolution": "node"
+    }
+    // "include": [
+    //     "./src/**/*"
+    // ]
 }

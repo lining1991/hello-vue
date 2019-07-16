@@ -9,17 +9,26 @@ const autoprefixer = require('autoprefixer');
 module.exports = {
     mode: 'development',
     devServer: {
-        port: 8084
+        // contentBase: Path.resolve(__dirname, './dist'),
+        // hot: true,
+        port: 8084,
+        after: function(app, server) {
+            console.log(`运行在哪个port*******`)
+        },
+        // https: true,
+        // disableHostCheck: true,  //绕过主机检查不建议这样做,
+        // index: 'index.html',
+        // publicPath: '/assets/'
     },
     entry: {
-        app: './src/index.js'
+        app: './src/main.ts'
     },
     output: {
         filename: '[name].[hash:7].js',
         path: Path.resolve(__dirname, 'dist')
     },
     resolve: {
-        extensions: ['.js', '.ts', '.vue', '.tsx', '.json']
+        extensions: ['.ts', '.tsx', '.vue', '.js', '.json']
     },
     module: {
         rules: [
@@ -30,7 +39,7 @@ module.exports = {
             },
             {
                 test: /.tsx?$/,
-                // loader: 'awesome-typescript-loader',
+                loader: 'awesome-typescript-loader',
                 exclude: /node_modules/
             },
             {
