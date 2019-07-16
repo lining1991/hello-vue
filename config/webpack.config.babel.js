@@ -9,7 +9,7 @@ module.exports = {
         port: 8084
     },
     entry: {
-        app: './src/main.ts'
+        app: './src/index.js'
     },
     output: {
         filename: '[name].[hash:7].js',
