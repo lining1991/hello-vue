@@ -1,9 +1,12 @@
-import Path from 'path';
-import VueLoaderPlugin from 'vue-loader/lib/plugin';
-import autoprefixer from 'autoprefixer';
+// import Path from 'path';
+// import VueLoaderPlugin from 'vue-loader/lib/plugin';
+// import autoprefixer from 'autoprefixer';
+const Path = require('path');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const autoprefixer = require('autoprefixer');
 // VueLoaderPlugin负责拷贝你已经定义的其他rules,然后应用到.vue的各个相关block 比方说<script>
 // const webpack
-export default {
+module.exports = {
     mode: 'development',
     devServer: {
         port: 8084
