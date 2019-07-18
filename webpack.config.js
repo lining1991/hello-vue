@@ -4,6 +4,7 @@
 const Path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const autoprefixer = require('autoprefixer');
+const htmlWebpackPlugin = require('html-webpack-plugin');
 // VueLoaderPlugin负责拷贝你已经定义的其他rules,然后应用到.vue的各个相关block 比方说<script>
 // const webpack
 module.exports = {
@@ -84,11 +85,32 @@ module.exports = {
                 enforce: 'pre',
                 test: /\.js$/, 
                 loader: 'source-map-loader'
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg)$/,
+                loader: 'url-loader',
+                query: {
+                    limit: 10000,
+                    name: 'assets/[name].[ext]'
+                }
+            },
+            {
+                test: /\.(ttf|woff2?|eot)(\?.*)?$/,
+                loader: 'url-loader',
+                query: {
+                    limit: 10000,
+                    name: 'assets/fonts/[name].[hash:7].[ext]'
+                }
             }
         ]
     },
     plugins: [
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new htmlWebpackPlugin({
+            filename: 'index.html',
+            template: './src/index.html',
+            inject: 'body'
+        })
     ]
     
 }
