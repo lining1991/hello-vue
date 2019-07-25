@@ -1,21 +1,42 @@
 <template>
     <div class="input-box">
-        <span class="label"><i class="iconfont icon-plus"></i></span>
-        <input type="text" v-model="inputText" @focus="handleFocus">
-        <span class="go"> <i class="iconfont icon-arrow-r"></i></span>
-       
+        <span class="label" @click="isInput = !isInput"><i class="iconfont" :class="iconObj"></i></span>
+        <input type="text" @focus="handleFocus" @input="handleInput" :placeholder="placeHolder">
+        <span class="go" @click="addList"> <i class="iconfont icon-arrow-r"></i></span>
     </div>
 </template>
 <script>
+// const PlaceHolder:string = '请输入'
 export default {
     data () {
         return {
-            inputText: '输入待办事项...'
+            inputText: '',
+            placeHolder: '请输入待办事项...',
+            isInput: {
+                type: Boolean,
+                default: true
+            }
+        }
+    },
+    computed: {
+        iconObj: function () {
+            // return this.isInput ? 'icon-plus' : 'icon-search';
+            return {
+                'icon-plus': this.isInput,
+                'icon-search': !this.isInput
+            }
         }
     },
     methods: {
         handleFocus () {
-           this.inputText = ''; 
+            console.log('focus');
+            // this.inputText = ''; 
+        },
+        toggle () {
+            this.isInput = !this.isInput;
+        },
+        addList () {
+            // this.inputText
         }
     },
 }
@@ -28,7 +49,8 @@ export default {
         display: flex;
         align-items: center;
         color: #666;
-        padding: 4px 0;
+        padding: 6px 0;
+        margin-bottom: 15px;
         input {
             flex: 1;
             color: #666;

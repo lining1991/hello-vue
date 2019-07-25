@@ -14,7 +14,10 @@
 new htmlWebpackPlugin({inject: ''}) 配错了 配置成head改为body
 ### 入口文件ts格式的引入scss又报错无法识别了
 我原本以为是因为ts的问题，其实是我还没处理图片字体图标的laoder问题
-
+### vue单文件组件中使用ts
+我把这个awesome-typescript-loader换成ts-loader 并追加配置
 另一种css的解决方案：[css-modules](https://juejin.im/post/59c62f8e6fb9a00a51439ad5)
 https://juejin.im/post/5a7803335188257a5d2b0fed
 
+- [] script支持ts
+- [] css-modules
