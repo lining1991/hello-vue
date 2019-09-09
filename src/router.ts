@@ -1,14 +1,14 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Calendar from './views/Calendar.vue';
-import Done from './views/Done.vue';
-import List from './views/List.vue';
-import Mine from './views/Mine.vue';
+import Calendar from './views/calendar.vue';
+import Done from './views/done.vue';
+import List from './views/list.vue';
+import Mine from './views/mine.vue';
 Vue.use(Router);
 
 // name是有什么用呢
 export default new Router({
-  mode: 'history',
+  // mode: 'history',
   base: process.env.BASE_URL,
   routes: [
     {

@@ -3,8 +3,8 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 
-import './css/icons.scss';
-// require('./css/icons.scss');
+// import './css/icon/demo.css';
+require('./css/icons.scss');
 
 
 // Vue.config.productionTip = false;
