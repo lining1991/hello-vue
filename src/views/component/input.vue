@@ -1,7 +1,8 @@
 <template>
     <div class="input-box">
         <span class="label" @click="isInput = !isInput"><i class="iconfont" :class="iconObj"></i></span>
-        <input type="text" @focus="handleFocus" @input="handleInput" :placeholder="placeHolder">
+        <input type="text" @focus="handleFocus" @input="handleInput" :placeholder="placeHolder" v-model="message" ref="inputBox">
+        <div>{{message}}</div>
         <span class="go" @click="addList"> <i class="iconfont icon-arrow-r"></i></span>
     </div>
 </template>
@@ -15,7 +16,8 @@ export default {
             isInput: {
                 type: Boolean,
                 default: true
-            }
+            },
+            message: ''
         }
     },
     computed: {
@@ -36,7 +38,12 @@ export default {
             this.isInput = !this.isInput;
         },
         addList () {
+            let inputStr = this.$refs.inputBox.value;
+            console.log('输入字符串', inputStr);
             // this.inputText
+        },
+        handleInput (e) {
+            console.log(e);
         }
     },
 }
