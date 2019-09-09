@@ -4,8 +4,14 @@
   "description": "## Project setup ``` npm install ```",
   "main": "index.js",
   "scripts": {
+<<<<<<< HEAD
+    "start": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+=======
     "start": "webpack-dev-server --config webpack.config.js",
     "dev": "webpack-dev-server --config ./config/webpack.config.babel.js"
+>>>>>>> todo-selfconfig
   },
   "repository": {
     "type": "git",
@@ -32,12 +38,15 @@
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.5",
     "css-loader": "^3.0.0",
+    "file-loader": "^4.1.0",
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.12.0",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
     "source-map-loader": "^0.2.4",
+    "ts-loader": "^6.0.4",
     "typescript": "^3.5.3",
+    "url-loader": "^2.1.0",
     "vue-loader": "^15.7.0",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.10",

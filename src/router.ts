@@ -8,7 +8,7 @@ Vue.use(Router);
 
 // name是有什么用呢
 export default new Router({
-  mode: 'history',
+  // mode: 'history',
   base: process.env.BASE_URL,
   routes: [
     {

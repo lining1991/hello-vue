@@ -10,3 +10,14 @@
 所以呢还需要安装各处处理css js的loader
 ### 这中间踩了个大坑，已经爬出来了但还没太想明白
 最开始的想法是用es6来写webpack配置文件，后来选用了一种方案就是直接把配置文件命名问webpack.config.xxx.js(eg:webpack.config.babel.js)，这样webpack-dev-server会自动选用合适的loader来编译配置文件再输出给node去执行。但是运行后报错，提示只能输出Plugin/Preset files are not allowed to export objects, only functions. 所以按照网上的提示把配置给升级到了babel7,结果有提示需要7的版本，但是我的是6的版本。可是我的babel配置明明是7啊。不过我查看我的配置版本确实是6.我也不知道这是为啥，然后我就不用webpack.config.babel.js，正常写一个webpack.config.js,运行起来就没有问题。
+### 报错vue-warn-cannot-find-element
+new htmlWebpackPlugin({inject: ''}) 配错了 配置成head改为body
+### 入口文件ts格式的引入scss又报错无法识别了
+我原本以为是因为ts的问题，其实是我还没处理图片字体图标的laoder问题
+### vue单文件组件中使用ts
+我把这个awesome-typescript-loader换成ts-loader 并追加配置
+另一种css的解决方案：[css-modules](https://juejin.im/post/59c62f8e6fb9a00a51439ad5)
+https://juejin.im/post/5a7803335188257a5d2b0fed
+
+- [] script支持ts
+- [] css-modules
