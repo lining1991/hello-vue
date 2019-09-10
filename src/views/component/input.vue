@@ -43,7 +43,10 @@ export default {
             this.$store.commit('add', {
                 text: inputStr,
                 date: '今天'
-            })
+            });
+            this.$store.commit('increment', {
+                count: 3
+            });
             console.log('输入字符串', inputStr);
             // this.inputText
         },

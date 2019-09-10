@@ -11,16 +11,24 @@
 export default {
     data () {
         return {
-            list: [{
-                text: '这是一条TODO记录',
-                date: '今天'
-            }, {
-                text: '这是第二条记录',
-                date: '昨天'
-            }, {
-                text: '这是第三天记录',
-                date: '2019-2-1'
-            }]
+            // list: [{
+            //     text: '这是一条TODO记录',
+            //     date: '今天'
+            // }, {
+            //     text: '这是第二条记录',
+            //     date: '昨天'
+            // }, {
+            //     text: '这是第三天记录',
+            //     date: '2019-2-1'
+            // }]
+        }
+    },
+    computed: {
+        count () {
+            return this.$store.state.count;
+        }, 
+        list () {
+            return this.$store.state.list;
         }
     }
 }
