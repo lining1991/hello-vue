@@ -22,14 +22,14 @@ module.exports = {
         // publicPath: '/assets/'
     },
     entry: {
-        app: './src/main.ts'
+        app: './src/main.js'
     },
     output: {
         filename: '[name].[hash:7].js',
         path: Path.resolve(__dirname, 'dist')
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.vue', '.js', '.json']
+        extensions: ['.js', '.ts', '.tsx', '.vue', '.json']
     },
     module: {
         rules: [

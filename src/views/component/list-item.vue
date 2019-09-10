@@ -1,14 +1,9 @@
 <template>
     <div class="item-wrapper">
-        <div class="item">
+        <div class="item" v-for="item in list">
             <i class="iconfont icon-check"></i>
-            <span class="text">好姐姐</span>
-            <span class="time">今天</span>
-        </div>
-        <div class="item">
-            <i class="iconfont icon-check"></i>
-            <span class="text">好姐姐好姐姐好姐姐好姐姐好姐姐好姐姐好姐姐好姐姐好姐姐</span>
-            <span class="time">12月31日</span>
+            <span class="text">{{item.text}}</span>
+            <span class="time">{{item.date}}</span>
         </div>
     </div>
 </template>
@@ -16,10 +11,16 @@
 export default {
     data () {
         return {
-            list: {
-                type: Array,
-                default: []
-            }
+            list: [{
+                text: '这是一条TODO记录',
+                date: '今天'
+            }, {
+                text: '这是第二条记录',
+                date: '昨天'
+            }, {
+                text: '这是第三天记录',
+                date: '2019-2-1'
+            }]
         }
     }
 }
