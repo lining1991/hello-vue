@@ -8,6 +8,8 @@
     </div>
 </template>
 <script>
+// import {mapState} from 'vuex';
+// https://vuex.vuejs.org/zh/guide/state.html
 export default {
     data () {
         return {
@@ -31,6 +33,19 @@ export default {
             return this.$store.state.list;
         }
     }
+    // 换一种写法试试
+    // computed: {
+    //     s () {},
+    //     ...mapState([
+    //         'count',
+    //         'list'
+    //     ])
+    // },
+    // computed: mapState([
+    //     'count',
+    //     'list'
+    // ])
+    
 }
 </script>
 <style lang="scss">

@@ -39,14 +39,14 @@ export default {
         },
         addList () {
             let inputStr = this.$refs.inputBox.value;
+            let s = [234, 12];
+            let t = [...s, 34];
             console.log('hahah', this.$store);
             this.$store.commit('add', {
                 text: inputStr,
                 date: '今天'
             });
-            this.$store.commit('increment', {
-                count: 3
-            });
+            this.$refs.inputBox.value = '';
             console.log('输入字符串', inputStr);
             // this.inputText
         },
