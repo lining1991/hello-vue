@@ -21,3 +21,6 @@ https://juejin.im/post/5a7803335188257a5d2b0fed
 
 - [] script支持ts
 - [] css-modules
+
+1. 点击箭头需要把写的信息添加到列表里边
+2. 需要研究下vuex相关的列一下
