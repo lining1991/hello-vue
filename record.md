@@ -24,3 +24,4 @@ https://juejin.im/post/5a7803335188257a5d2b0fed
 
 1. 点击箭头需要把写的信息添加到列表里边
 2. 需要研究下vuex相关的列一下
+### 有个很奇怪的事情，就是@babel-polyfill时，useage:entry 但是入口文件处并没有引入，也没有报错
