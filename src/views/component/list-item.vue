@@ -1,14 +1,14 @@
 <template>
     <div class="item-wrapper">
-        <div class="item" v-for="item in list">
-            <i class="iconfont icon-check"></i>
+        <div class="item" v-for="item in list" @click="modify">
+            <i class="iconfont icon-check" @click.stop="done"></i>
             <span class="text">{{item.text}}</span>
             <span class="time">{{item.date}}</span>
         </div>
     </div>
 </template>
 <script>
-// import {mapState} from 'vuex';
+import {mapState} from 'vuex';
 // https://vuex.vuejs.org/zh/guide/state.html
 export default {
     data () {
@@ -25,14 +25,14 @@ export default {
             // }]
         }
     },
-    computed: {
-        count () {
-            return this.$store.state.count;
-        }, 
-        list () {
-            return this.$store.state.list;
-        }
-    }
+    // computed: {
+    //     count () {
+    //         return this.$store.state.count;
+    //     }, 
+    //     list () {
+    //         return this.$store.state.list;
+    //     }
+    // }
     // 换一种写法试试
     // computed: {
     //     s () {},
@@ -41,10 +41,21 @@ export default {
     //         'list'
     //     ])
     // },
-    // computed: mapState([
-    //     'count',
-    //     'list'
-    // ])
+    computed: mapState([
+        'count',
+        'list'
+    ]),
+    methods: {
+        done () {
+            // 移除到已完成tab里边
+            // vuex 删除某条信息
+            console.log('done');
+        },
+        modify () {
+            // 修改当前待办事项
+            console.log('modify');
+        }
+    }
     
 }
 </script>

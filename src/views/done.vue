@@ -4,6 +4,7 @@
     </div>   
 </template>
 <script>
+// vue组件的三种方式
 export default {
     
 }
