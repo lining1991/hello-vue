@@ -29,7 +29,11 @@ module.exports = {
         path: Path.resolve(__dirname, 'dist')
     },
     resolve: {
-        extensions: ['.js', '.ts', '.tsx', '.vue', '.json']
+        extensions: ['.js', '.ts', '.tsx', '.vue', '.json'],
+        alias: {
+            'src': Path.resolve(__dirname, './src'),
+            'views': Path.resolve(__dirname, './views')
+        }
     },
     module: {
         rules: [

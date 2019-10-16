@@ -37,15 +37,20 @@ export default {
         },
         addList () {
             let inputStr = this.$refs.inputBox.value;
-            let s = [234, 12];
-            let t = [...s, 34];
-            console.log('hahah', this.$store);
-            // 添加的时间应该都是为今天可以写死，ps:这个地方需要调用接口后才这样执行
-            this.$store.commit('add', {
-                text: inputStr,
-                date: '今天'
-            });
-            this.$refs.inputBox.value = '';
+            // let s = [234, 12];
+            // let t = [...s, 34];
+            // console.log('hahah', this.$store);
+            if (inputStr.trim()) {
+                this.$store.commit('add', {
+                    text: inputStr,
+                    date: '今天'
+                });
+                this.$refs.inputBox.value = '';
+            } else {
+                // ui表示
+                alert('请输入代办事项');
+            }
+            // todo:添加的时间应该都是为今天可以写死，ps:这个地方需要调用接口后才这样执行
             console.log('输入字符串', inputStr);
         },
         handleInput (e) {
@@ -55,30 +60,5 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-    .input-box {
-        background: #fff;
-        border-radius: 4px;
-        font-size: 14px;
-        display: flex;
-        align-items: center;
-        color: #666;
-        padding: 6px 0;
-        margin-bottom: 15px;
-        input {
-            flex: 1;
-            color: #666;
-            border: none;
-            outline: none;
-        }
-        // input:w
-        .label {
-            width: 25px;
-        }
-        .go {
-            width: 30px;
-        }
-        .label, .go {
-            text-align: center;
-        }
-    }
+   @import 'src/css/input.scss';
 </style>
