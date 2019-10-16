@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-        <!-- <list-item :list = "list"></list-item>     -->
+        <list-item></list-item>    
     </div>   
 </template>
 <script>
@@ -23,7 +23,7 @@ export default {
         }]
     }),
     mounted () {
-        console.log(this.list);
+        // console.log(this.list);
     }
     // data: function () {
     //     return {

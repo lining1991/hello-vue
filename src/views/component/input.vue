@@ -42,7 +42,7 @@ export default {
             // console.log('hahah', this.$store);
             if (inputStr.trim()) {
                 this.$store.commit('add', {
-                    text: inputStr,
+                    title: inputStr,
                     date: '今天'
                 });
                 this.$refs.inputBox.value = '';

@@ -24,7 +24,7 @@
         <div class="item-wrapper">
             <div class="item" v-for="item in list" @click="modify">
                 <i class="iconfont icon-check" @click.stop="done"></i>
-                <span class="text">{{item.text}}</span>
+                <span class="text">{{item.title}}</span>
                 <span class="time">{{item.date}}</span>
             </div>
         </div>
@@ -54,21 +54,18 @@ export default {
             // },
             // error: true
             // list: [{
-            //     text: '这是一条TODO记录',
+            //     title: '这是一条TODO记录',
             //     date: '今天'
             // }, {
-            //     text: '这是第二条记录',
+            //     title: '这是第二条记录',
             //     date: '昨天'
             // }, {
-            //     text: '这是第三天记录',
+            //     title: '这是第三天记录',
             //     date: '2019-2-1'
             // }]
         }
     },
     props: {
-        list: {
-            type: Array
-        }
     },
     computed: {
         classObject () {

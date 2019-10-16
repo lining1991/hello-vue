@@ -11,7 +11,7 @@ export default new Vuex.Store({
   mutations: {
     add (state, payload) {
         let listObj = {
-            text: payload.text,
+            title: payload.title,
             date: payload.date
         }
         state.list.unshift(listObj);
