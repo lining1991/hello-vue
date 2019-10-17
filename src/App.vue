@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <div id="nav">
-      	<router-link to="/" class="tab">
+      	<router-link to="/list" class="tab">
     		    <i class="iconfont icon-list-search"></i><br>列表
       	</router-link>
       	<router-link to="/done" class="tab">
@@ -18,8 +18,16 @@
   </div>
 </template>
 <script>
+import axios from 'axios';
 export default {
-  
+	beforeMount () {
+		axios.get('/mock/list').then( res => {
+            console.log(res.data);
+            this.$store.commit('init', {
+                data: res.data
+            });
+        });
+	}
 }
 </script>
 <style lang="scss">

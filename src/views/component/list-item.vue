@@ -22,8 +22,9 @@
         <!-- 多重值 从 2.3.0 起你可以为 style 绑定中的属性提供一个包含多个值的数组，常用于提供多个带前缀的值，例如：-->
         <!-- <div :style="{ display: ['flex', '-webkit-box', '-ms-flexbox'] }">哈哈哈哈哈</div> -->
         <div class="item-wrapper">
-            <div class="item" v-for="item in list" @click="modify">
+            <div class="item" v-for="item in userList" @click="modify">
                 <i class="iconfont icon-check" @click.stop="done"></i>
+                {{item.isdone}}
                 <span class="text">{{item.title}}</span>
                 <span class="time">{{item.date}}</span>
             </div>
@@ -32,7 +33,7 @@
 </template>
 <script>
 import {mapState} from 'vuex';
-import axios from 'axios'
+
 // https://vuex.vuejs.org/zh/guide/state.html
 export default {
     data () {
@@ -67,6 +68,9 @@ export default {
         }
     },
     props: {
+        status: {
+            type: Boolean
+        }
     },
     computed: {
         classObject () {
@@ -75,18 +79,18 @@ export default {
                 'text-danger': this.error
             }
         },
+        userList () {
+            return this.list.filter((item) => {
+                return item.isdone === this.status;
+            })
+        },
         ...mapState([
             'count',
             'list'
         ])
     },
     created () {
-        axios.get('/mock/list').then( res => {
-            console.log(res.data);
-            this.$store.commit('init', {
-                data: res.data
-            });
-        });
+        
     },
     mounted () {
         console.log('abahah', this.list);

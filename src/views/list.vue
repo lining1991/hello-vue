@@ -2,7 +2,7 @@
     <div class="main">
         <top-input></top-input>
         <filter-tab></filter-tab>
-        <list-item></list-item>
+        <list-item :list="true"></list-item>
     </div>   
 </template>
 <script>

@@ -25,7 +25,7 @@
 export default {
    data () {
        return {
-           placeholder: 'hahahh'
+           placeHolder: '请输入描述内容'
        }
    },
    methods: {

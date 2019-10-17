@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-        <list-item></list-item>    
+        <list-item :status="true"></list-item>    
     </div>   
 </template>
 <script>
