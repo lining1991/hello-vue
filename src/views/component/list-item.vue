@@ -32,6 +32,7 @@
 </template>
 <script>
 import {mapState} from 'vuex';
+import axios from 'axios'
 // https://vuex.vuejs.org/zh/guide/state.html
 export default {
     data () {
@@ -78,6 +79,17 @@ export default {
             'count',
             'list'
         ])
+    },
+    created () {
+        axios.get('/mock/list').then( res => {
+            console.log(res.data);
+            this.$store.commit('init', {
+                data: res.data
+            });
+        });
+    },
+    mounted () {
+        console.log('abahah', this.list);
     },
     // computed: {
     //     count () {

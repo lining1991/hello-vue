@@ -10,7 +10,8 @@ Random.extend({
 // Mock.mock('@name');
 const produceItemList = function () {
     let listItem = [];
-    for (let i = 0; i < 20; i++) {
+    let totalCount = Random.integer(3, 40);
+    for (let i = 0; i < totalCount; i++) {
         let listItemObj = {
             title: Random.ctitle(5, 20),
             date: Random.date(),

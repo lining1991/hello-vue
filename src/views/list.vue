@@ -9,17 +9,11 @@
 import topInput from './component/input'
 import filterTab from './component/filter-tab'
 import listItem from './component/list-item'
-import axios from 'axios'
 export default {
     components: {
         topInput,
         filterTab,
         listItem
-    },
-    beforeMount () {
-        axios.get('/mock/list').then(res => {
-            console.log(res);
-        });
     }
 }
 </script>
