@@ -8,7 +8,7 @@ Random.extend({
     }
 });
 // Mock.mock('@name');
-const produceItemList = function () {
+const produceInitialItemList = function () {
     let listItem = [];
     let totalCount = Random.integer(3, 40);
     for (let i = 0; i < totalCount; i++) {
@@ -23,4 +23,7 @@ const produceItemList = function () {
     }
     return listItem;
 }
-Mock.mock('/mock/list', produceItemList);
+Mock.mock('/mock/list', produceInitialItemList);
+Mock.mock('/mock/add', ops => {
+    console.log(ops);
+});

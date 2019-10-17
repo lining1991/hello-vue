@@ -7,6 +7,7 @@
 </template>
 <script>
 // const PlaceHolder:string = '请输入'
+import axios from 'axios';
 export default {
     data () {
         return {
@@ -41,6 +42,11 @@ export default {
             // let t = [...s, 34];
             // console.log('hahah', this.$store);
             if (inputStr.trim()) {
+                axios.post('/mock/add', {
+                    title: inputStr
+                }).then(res => {
+                    console.log('reshah', res);
+                });
                 this.$store.commit('add', {
                     title: inputStr,
                     date: '今天'
