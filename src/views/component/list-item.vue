@@ -159,7 +159,7 @@ export default {
                 margin-right: 14px;
             }
             .time {
-                flex-basis: 5em;
+                flex-basis: 10em;
                 text-align: right;
             }
         }

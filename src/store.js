@@ -17,7 +17,7 @@ export default new Vuex.Store({
         state.list.unshift(listObj);
     },
     init (state, payload) {
-      state.list.push([...payload.data])
+      state.list.push(...payload.data);
     },
     increment (state, payload) {
         state.count += payload.count;
