@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="bottom">
-            <textarea name="" id="" cols="30" rows="10" placeholder="描述"></textarea>
+            <textarea name="" id="" cols="30" rows="10" placeholder="请输入描述内容"></textarea>
         </div>
     </div>   
 </template>

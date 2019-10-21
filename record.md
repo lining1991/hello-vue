@@ -28,3 +28,5 @@ https://juejin.im/post/5a7803335188257a5d2b0fed
 
 最小化可执行方案，先把整体框架大概搞出来再完善具体细节
 配置快捷路径：resolve:{ alias: {'src', Path.resolve(__dirname, './src')}};
+下一步改做的是从列表页到详情页面的时候数据的传递，
+需要给数据新增ID，可以用mock进行uuid
