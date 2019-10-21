@@ -42,16 +42,17 @@ export default {
             // let t = [...s, 34];
             // console.log('hahah', this.$store);
             if (inputStr.trim()) {
-                axios.post('/mock/add', {
-                    title: inputStr
-                }).then(res => {
-                    console.log('reshah', res);
-                });
-                this.$store.commit('add', {
+                let ajaxData = {
                     title: inputStr,
-                    date: '今天'
+                    isdone: false,
+                    content: '',
+                    category: 'default',
+                    date: new Date()
+                };
+                axios.post('/mock/add', ajaxData).then(res => {
+                    this.$store.commit('add', ajaxData);
+                    this.$refs.inputBox.value = '';
                 });
-                this.$refs.inputBox.value = '';
             } else {
                 // ui表示
                 alert('请输入代办事项');

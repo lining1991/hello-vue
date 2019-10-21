@@ -22,11 +22,10 @@ import axios from 'axios';
 export default {
 	beforeMount () {
 		axios.get('/mock/list').then( res => {
-            console.log(res.data);
-            this.$store.commit('init', {
-                data: res.data
-            });
+        this.$store.commit('init', {
+            data: res.data
         });
+    });
 	}
 }
 </script>

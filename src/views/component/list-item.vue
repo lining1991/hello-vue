@@ -24,9 +24,8 @@
         <div class="item-wrapper">
             <div class="item" v-for="item in userList" @click="modify">
                 <i class="iconfont icon-check" @click.stop="done"></i>
-                {{item.isdone}}
                 <span class="text">{{item.title}}</span>
-                <span class="time">{{item.date}}</span>
+                <span class="time">{{item.date | formatDate}}</span>
             </div>
         </div>
     </div>

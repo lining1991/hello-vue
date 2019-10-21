@@ -3,7 +3,7 @@ import Mock from 'mockjs';
 const Random = Mock.Random;
 Random.extend({
     category: function (category) {
-        var category = ['food', 'live', 'drink', 'sleep'];
+        var category = ['food', 'live', 'drink', 'sleep', 'default'];
         return this.pick(category);
     }
 });
@@ -25,5 +25,8 @@ const produceInitialItemList = function () {
 }
 Mock.mock('/mock/list', produceInitialItemList);
 Mock.mock('/mock/add', ops => {
-    console.log(ops);
+    let data = JSON.parse(ops.body);
+    return {
+        error_code: 0
+    }
 });

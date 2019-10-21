@@ -10,6 +10,7 @@ const htmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     mode: 'development',
     devServer: {
+        host:'0.0.0.0',
         // contentBase: Path.resolve(__dirname, './dist'),
         // hot: true,
         port: 8084,

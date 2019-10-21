@@ -10,11 +10,15 @@ export default new Vuex.Store({
   },
   mutations: {
     add (state, payload) {
-        let listObj = {
-            title: payload.title,
-            date: payload.date
-        }
-        state.list.unshift(listObj);
+        // let listObj = {
+        //   title: payload,
+        //   date: Random.date(),
+        //   content: Random.cparagraph(),
+        //   isdone: Random.boolean(),
+        //   category: Random.category()
+
+        // }
+        state.list.unshift(payload);
     },
     init (state, payload) {
       state.list.push(...payload.data);
