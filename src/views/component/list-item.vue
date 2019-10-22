@@ -22,7 +22,7 @@
         <!-- 多重值 从 2.3.0 起你可以为 style 绑定中的属性提供一个包含多个值的数组，常用于提供多个带前缀的值，例如：-->
         <!-- <div :style="{ display: ['flex', '-webkit-box', '-ms-flexbox'] }">哈哈哈哈哈</div> -->
         <div class="item-wrapper">
-            <div class="item" v-for="item in userList" @click="modify">
+            <div class="item" v-for="item in userList" @click="modify(item.uid)" :key="item.uid">
                 <i class="iconfont icon-check" @click.stop="done"></i>
                 <span class="text">{{item.title}}</span>
                 <span class="time">{{item.date | formatDate}}</span>
@@ -120,10 +120,10 @@ export default {
             // vuex 删除某条信息
             console.log('done');
         },
-        modify () {
+        modify (uid) {
             // 修改当前待办事项
-            console.log('modify');
-            this.$router.push({name: 'Detail'});
+            console.log('modify', uid);
+            this.$router.push({name: 'Detail', params: {uid}});
         }
     }
     

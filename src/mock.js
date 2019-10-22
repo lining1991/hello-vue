@@ -17,16 +17,27 @@ const produceInitialItemList = function () {
             date: Random.date(),
             content: Random.cparagraph(),
             isdone: Random.boolean(),
-            category: Random.category()
+            category: Random.category(),
+            uid: Random.guid()
         }
         listItem.push(listItemObj);
     }
     return listItem;
 }
-Mock.mock('/mock/list', produceInitialItemList);
+const arr = produceInitialItemList();
+Mock.mock('/mock/list', arr);
 Mock.mock('/mock/add', ops => {
     let data = JSON.parse(ops.body);
     return {
         error_code: 0
+    }
+});
+Mock.mock('/mock/get_detail', ops => {
+    let data = JSON.parse(ops.body);
+    let detail = arr.filter(item => item.uid === data.uid);
+    return {
+        error_code: 0,
+        uid: data.uid,
+        data: detail[0]
     }
 });

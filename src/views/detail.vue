@@ -2,19 +2,19 @@
     <div class="main">
         <div class="input-box">
             <span class="label"><i class="iconfont icon-check"></i></span>
-            <input type="text" @focus="handleFocus" @input="handleInput" :placeholder="placeHolder">
+            <input type="text" @focus="handleFocus" @input="handleInput" :placeholder="placeHolder" :value="title">
             <span class="go"> <i class="iconfont icon-delete"></i></span>
         </div>
         <div class="filter-tab">
             <div class="left">
-                分类 <select name="" id="" class="select-tab"><option value="默认">默认</option><option value="学习">学习</option></select>
+                分类 <select name="" id="" class="select-tab"><option :value="category">{{category}}</option><option :value="category">{{category}}</option></select>
             </div>
             <div class="right">
-                日期 <select name="" id="" class="select-tab"><option value="2019年11月25日">2019年11月25日</option></select>
+                日期 <select name="" id="" class="select-tab"><option :value="date">{{date}}</option></select>
             </div>
         </div>
         <div class="bottom">
-            <textarea name="" id="" cols="30" rows="10" placeholder="请输入描述内容"></textarea>
+            <textarea name="" id="" cols="30" rows="10" placeholder="请输入描述内容">{{content}}</textarea>
         </div>
     </div>   
 </template>
@@ -22,13 +22,40 @@
 // import topInput from './component/input'
 // import filterTab from './component/filter-tab'
 // import listItem from './component/list-item'
+import axios from 'axios';
 export default {
    data () {
        return {
-           placeHolder: '请输入描述内容'
+            placeHolder: '请输入描述内容',
+            content: '',
+            title: '',
+            category: '',
+            date: ''
        }
    },
+   created () {
+       this.fetchData();
+   },
    methods: {
+       fetchData () {
+           let uid = this.$route.params.uid;
+           console.log('uid', uid);
+           axios.post('/mock/get_detail', {uid})
+           .then(response => {
+               let res = response.data;
+               let data = res.data;
+               if (res.error_code === 0) {
+                //    let title, category, date, content;
+                //    {title, category, date, content} = data;
+                // {this.title, this.category, this.date, this.content} = data;
+                // console.log('detail', res.data);
+                    this.title = data.title;
+                    this.content = data.content;
+                    this.category = data.category;
+                    this.date = data.date;
+               }
+           });
+       },
        handleFocus () {
 
        },
