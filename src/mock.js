@@ -28,9 +28,13 @@ const arr = produceInitialItemList();
 Mock.mock('/mock/list', arr);
 Mock.mock('/mock/add', ops => {
     let data = JSON.parse(ops.body);
+    // 这个还需要加到数组里边
     return {
         error_code: 0
     }
+});
+Mock.mock('/mock/update', ops => {
+
 });
 Mock.mock('/mock/get_detail', ops => {
     let data = JSON.parse(ops.body);

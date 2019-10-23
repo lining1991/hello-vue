@@ -2,7 +2,7 @@
     <div class="main">
         <div class="input-box">
             <span class="label"><i class="iconfont icon-check"></i></span>
-            <input type="text" @focus="handleFocus" @input="handleInput" :placeholder="placeHolder" :value="title">
+            <input type="text" @focus="handleFocus" @input="handleInput" :placeholder="placeHolder" v-model="title">
             <span class="go"> <i class="iconfont icon-delete"></i></span>
         </div>
         <div class="filter-tab">
@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="bottom">
-            <textarea name="" id="" cols="30" rows="10" placeholder="请输入描述内容">{{content}}</textarea>
+            <textarea name="" id="" cols="30" rows="10" placeholder="请输入描述内容" v-model="content"></textarea>
         </div>
     </div>   
 </template>
@@ -24,20 +24,42 @@
 // import listItem from './component/list-item'
 import axios from 'axios';
 export default {
-   data () {
-       return {
+    data () {
+        return {
             placeHolder: '请输入描述内容',
             content: '',
             title: '',
             category: '',
             date: ''
-       }
-   },
-   created () {
+        }
+    },
+    // beforeRouteEnter (to, from, next) {
+    //     // console.log(to, from, next);
+    // },
+    // 路由改变前，组件就已经渲染完了
+    // 逻辑稍稍不同
+    // beforeRouteUpdate (to, from, next) {
+        // console.log('beforeRouteUpdate', to, from, next);
+        // this.post = null
+        // getPost(to.params.id, (err, post) => {
+        // this.setData(err, post)
+        // next()
+        // })
+    // },
+    beforeRouteLeave () {
+        console.log('将要离开详情页面了');
+        console.log(this.content);
+    },
+    beforeDestory () {
+        alert('你将要离开吗');
+        console.log('组件将被销毁');
+        // 离开页面时  这个钩子并不会发生
+    },
+    created () {
        this.fetchData();
-   },
-   methods: {
-       fetchData () {
+    },
+    methods: {
+        fetchData () {
            let uid = this.$route.params.uid;
            console.log('uid', uid);
            axios.post('/mock/get_detail', {uid})
@@ -55,14 +77,14 @@ export default {
                     this.date = data.date;
                }
            });
-       },
-       handleFocus () {
+        },
+        handleFocus () {
 
-       },
-       handleInput () {
+        },
+        handleInput () {
 
-       }
-   }
+        }
+    }
 }
 </script>
 <style lang="scss" scoped>
