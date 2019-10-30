@@ -22,8 +22,8 @@
         <!-- 多重值 从 2.3.0 起你可以为 style 绑定中的属性提供一个包含多个值的数组，常用于提供多个带前缀的值，例如：-->
         <!-- <div :style="{ display: ['flex', '-webkit-box', '-ms-flexbox'] }">哈哈哈哈哈</div> -->
         <div class="item-wrapper">
-            <div class="item" v-for="item in userList" @click="modify(item.uid)" :key="item.uid">
-                <i class="iconfont icon-check" @click.stop="done"></i>
+            <div class="item" v-for="item in userList" @click="goModify(item.uid)" :key="item.uid">
+                <i class="iconfont icon-check" @click.stop="done(item.uid)"></i>
                 <span class="text">{{item.title}}</span>
                 <span class="time">{{item.date | formatDate}}</span>
             </div>
@@ -32,7 +32,7 @@
 </template>
 <script>
 import {mapState} from 'vuex';
-
+import axios from 'axios';
 // https://vuex.vuejs.org/zh/guide/state.html
 export default {
     data () {
@@ -115,12 +115,29 @@ export default {
     //     'list'
     // ]),
     methods: {
-        done () {
-            // 移除到已完成tab里边
-            // vuex 删除某条信息
+        done (uid) {
+            // ①这种写法 mock会报错
+            // axios.get('/mock/done', {
+            //     params: {
+            //         uid 
+            //     }
+            // })
+            // ②这种写法也报错
+            // axios.get(`/mock/done?uid=123`)
+            axios.post('/mock/done', {uid})
+            .then((res) => {
+                let data = res.data;
+                // vuex
+                if (data.error_code === 0) {
+                    this.$store.commit('done', {uid});
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            });
             console.log('done');
         },
-        modify (uid) {
+        goModify (uid) {
             // 修改当前待办事项
             console.log('modify', uid);
             this.$router.push({name: 'Detail', params: {uid}});

@@ -60,13 +60,13 @@ export default {
     },
     methods: {
         fetchData () {
-           let uid = this.$route.params.uid;
-           console.log('uid', uid);
-           axios.post('/mock/get_detail', {uid})
-           .then(response => {
-               let res = response.data;
-               let data = res.data;
-               if (res.error_code === 0) {
+            let uid = this.$route.params.uid;
+            console.log('uid', uid);
+            axios.post('/mock/get_detail', {uid})
+            .then(response => {
+                let res = response.data;
+                let data = res.data;
+                if (res.error_code === 0) {
                 //    let title, category, date, content;
                 //    {title, category, date, content} = data;
                 // {this.title, this.category, this.date, this.content} = data;
@@ -75,8 +75,8 @@ export default {
                     this.content = data.content;
                     this.category = data.category;
                     this.date = data.date;
-               }
-           });
+                }
+            });
         },
         handleFocus () {
 

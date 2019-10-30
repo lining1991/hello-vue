@@ -20,6 +20,14 @@ export default new Vuex.Store({
         // }
         state.list.unshift(payload);
     },
+    done (state, payload) {
+        state.list.forEach(item => {
+          if (item.uid === payload.uid) {
+            console.log('发生了done');
+            item.isdone = true;
+          }
+        });
+    },
     init (state, payload) {
       state.list.push(...payload.data);
     },

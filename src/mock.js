@@ -24,8 +24,8 @@ const produceInitialItemList = function () {
     }
     return listItem;
 }
-const arr = produceInitialItemList();
-Mock.mock('/mock/list', arr);
+let appArr = produceInitialItemList();
+Mock.mock('/mock/list', appArr);
 Mock.mock('/mock/add', ops => {
     let data = JSON.parse(ops.body);
     // 这个还需要加到数组里边
@@ -33,12 +33,29 @@ Mock.mock('/mock/add', ops => {
         error_code: 0
     }
 });
+// 修改（更新）某个项
 Mock.mock('/mock/update', ops => {
 
 });
+// 把该项的状态改为已完成
+Mock.mock('/mock/done', ops => {
+    let data = JSON.parse(ops.body);
+    // appArr = appArr.filter(item => item.uid !== data.uid);
+    console.log('done', ops);
+    appArr.forEach((item, index) => {
+        if (item.uid === data.uid) {
+            item.isdone = true;
+        }
+    });
+    return {
+        error_code: 0,
+        uid: data.uid
+    }
+});
+// 获取详情
 Mock.mock('/mock/get_detail', ops => {
     let data = JSON.parse(ops.body);
-    let detail = arr.filter(item => item.uid === data.uid);
+    let detail = appArr.filter(item => item.uid === data.uid);
     return {
         error_code: 0,
         uid: data.uid,
