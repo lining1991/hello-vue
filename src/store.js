@@ -21,6 +21,7 @@ export default new Vuex.Store({
         state.list.unshift(payload);
     },
     done (state, payload) {
+        // ? 这样子的用for循环会不会更好些呢 可以break能省掉一些循环
         state.list.forEach(item => {
           if (item.uid === payload.uid) {
             console.log('发生了done');
