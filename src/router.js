@@ -4,15 +4,20 @@ import Calendar from './views/calendar.vue';
 import Done from './views/done.vue';
 import List from './views/list.vue';
 import Mine from './views/mine.vue';
+import Detail from './views/detail.vue';
 Vue.use(Router);
 
 // name是有什么用呢
 export default new Router({
   // mode: 'history',
-  base: process.env.BASE_URL,
+  // base: process.env.BASE_URL,
   routes: [
     {
       path: '/',
+      redirect: '/List'
+    },
+    {
+      path: '/list',
       name: 'List',
       component: List,
     },
@@ -35,5 +40,10 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       // 这个是异步的吗component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
     },
+    {
+      path: '/detail',
+      name: 'Detail',
+      component: Detail
+    }
   ],
 });

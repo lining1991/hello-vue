@@ -1,0 +1,26 @@
+.input-box {
+    background: #fff;
+    border-radius: 4px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    color: #666;
+    padding: 6px 0;
+    margin-bottom: 15px;
+    input {
+        flex: 1;
+        color: #666;
+        border: none;
+        outline: none;
+    }
+    // input:w
+    .label {
+        width: 25px;
+    }
+    .go {
+        width: 30px;
+    }
+    .label, .go {
+        text-align: center;
+    }
+}

@@ -10,17 +10,33 @@ export default new Vuex.Store({
   },
   mutations: {
     add (state, payload) {
-        let listObj = {
-            text: payload.text,
-            date: payload.date
-        }
-        state.list.unshift(listObj);
+        // let listObj = {
+        //   title: payload,
+        //   date: Random.date(),
+        //   content: Random.cparagraph(),
+        //   isdone: Random.boolean(),
+        //   category: Random.category()
+
+        // }
+        state.list.unshift(payload);
+    },
+    done (state, payload) {
+        // ? 这样子的用for循环会不会更好些呢 可以break能省掉一些循环
+        state.list.forEach(item => {
+          if (item.uid === payload.uid) {
+            console.log('发生了done');
+            item.isdone = true;
+          }
+        });
+    },
+    init (state, payload) {
+      state.list.push(...payload.data);
     },
     increment (state, payload) {
         state.count += payload.count;
     }
   },
   actions: {
-
+    
   },
 });

@@ -10,6 +10,7 @@ const htmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     mode: 'development',
     devServer: {
+        host:'0.0.0.0',
         // contentBase: Path.resolve(__dirname, './dist'),
         // hot: true,
         port: 8084,
@@ -29,7 +30,11 @@ module.exports = {
         path: Path.resolve(__dirname, 'dist')
     },
     resolve: {
-        extensions: ['.js', '.ts', '.tsx', '.vue', '.json']
+        extensions: ['.js', '.ts', '.tsx', '.vue', '.json'],
+        alias: {
+            'src': Path.resolve(__dirname, './src'),
+            'views': Path.resolve(__dirname, './views')
+        }
     },
     module: {
         rules: [

@@ -1,25 +1,32 @@
 <template>
   <div class="page">
     <div id="nav">
-      	<router-link to="/" class="tab">
-    		<i class="iconfont icon-list-search"></i><br>列表
+      	<router-link to="/list" class="tab">
+    		    <i class="iconfont icon-list-search"></i><br>列表
       	</router-link>
       	<router-link to="/done" class="tab">
-			<i class="iconfont icon-done"></i><br>已完成
+			      <i class="iconfont icon-done"></i><br>已完成
       	</router-link>
       	<router-link to="/calendar" class="tab">
-			<i class="iconfont icon-calendar2"></i><br>日历
-		</router-link>
+			      <i class="iconfont icon-calendar2"></i><br>日历
+		    </router-link>
       	<router-link to="/mine" class="tab">
-		  	<i class="iconfont icon-me"></i><br>关于
-		</router-link>
+            <i class="iconfont icon-me"></i><br>关于
+        </router-link>
     </div>
     <router-view/>
   </div>
 </template>
 <script>
+import axios from 'axios';
 export default {
-  
+	beforeMount () {
+		axios.get('/mock/list').then( res => {
+        this.$store.commit('init', {
+            data: res.data
+        });
+    });
+	}
 }
 </script>
 <style lang="scss">
@@ -37,6 +44,8 @@ html, body {
 }
 .page {
   height: 100vh;
+  box-sizing: border-box;
+  padding-bottom: 50px;
 }
 #nav {
   position: fixed;
@@ -47,8 +56,8 @@ html, body {
   background: #fff;
   .tab {
     flex: 1;
-	text-align: center;
-	line-height: 24px;
+    text-align: center;
+    line-height: 24px;
   }
   a {
     font-weight: bold;
