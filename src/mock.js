@@ -1,4 +1,5 @@
 import Mock from 'mockjs';
+import { isArrayLiteralExpression } from 'typescript';
 // https://github.com/nuysoft/Mock/wiki/Getting-Started
 const Random = Mock.Random;
 Random.extend({
@@ -35,7 +36,15 @@ Mock.mock('/mock/add', ops => {
 });
 // 修改（更新）某个项
 Mock.mock('/mock/update', ops => {
-
+    let data = JSON.parse(ops.body);
+    appArr.forEach((item, index) => {
+        if (item.uid === data.uid) {
+            appArr[index] = data;
+        }
+    });
+    return {
+        error_code: 0
+    }
 });
 // 把该项的状态改为已完成
 Mock.mock('/mock/done', ops => {

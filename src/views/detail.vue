@@ -2,19 +2,20 @@
     <div class="main">
         <div class="input-box">
             <span class="label"><i class="iconfont icon-check"></i></span>
-            <input type="text" @focus="handleFocus" @input="handleInput" :placeholder="placeHolder" v-model="title">
+            <input type="text" @focus="handleFocus" @input="handleInput" :placeholder="placeHolder" v-model="item.title">
             <span class="go"> <i class="iconfont icon-delete"></i></span>
         </div>
         <div class="filter-tab">
             <div class="left">
-                分类 <select name="" id="" class="select-tab"><option :value="category">{{category}}</option><option :value="category">{{category}}</option></select>
+                分类 <select name="" id="" class="select-tab"><option :value="item.category">{{item.category}}</option><option :value="item.category">{{item.category}}</option></select>
             </div>
             <div class="right">
-                日期 <select name="" id="" class="select-tab"><option :value="date">{{date}}</option></select>
+                <!-- 日期 <select name="" id="" class="select-tab"><option :value="item.date">{{item.date}}</option></select> -->
+                日期<input type="date" v-model="item.date">
             </div>
         </div>
         <div class="bottom">
-            <textarea name="" id="" cols="30" rows="10" placeholder="请输入描述内容" v-model="content"></textarea>
+            <textarea name="" id="" cols="30" rows="10" placeholder="请输入描述内容" v-model="item.content"></textarea>
         </div>
     </div>   
 </template>
@@ -27,10 +28,14 @@ export default {
     data () {
         return {
             placeHolder: '请输入描述内容',
-            content: '',
-            title: '',
-            category: '',
-            date: ''
+            item: {
+                content: '',
+                title: '',
+                category: '',
+                date: '',
+                uid: '',
+                idDone: ''
+            }
         }
     },
     // beforeRouteEnter (to, from, next) {
@@ -46,9 +51,16 @@ export default {
         // next()
         // })
     // },
-    beforeRouteLeave () {
-        console.log('将要离开详情页面了');
-        console.log(this.content);
+    beforeRouteLeave (to, from, next) {
+        let updateData = this.item;
+        axios.post('/mock/update', updateData)
+        .then(response => {
+            let res = response.data;
+            if (res.error_code === 0) {
+                this.$store.commit('update', updateData)
+                next();
+            }
+        });
     },
     beforeDestory () {
         alert('你将要离开吗');
@@ -67,14 +79,16 @@ export default {
                 let res = response.data;
                 let data = res.data;
                 if (res.error_code === 0) {
-                //    let title, category, date, content;
-                //    {title, category, date, content} = data;
-                // {this.title, this.category, this.date, this.content} = data;
+                //    let title, item.category, date, content;
+                //    {title, item.category, date, content} = data;
+                // {this.title, this.item.category, this.date, this.content} = data;
                 // console.log('detail', res.data);
-                    this.title = data.title;
-                    this.content = data.content;
-                    this.category = data.category;
-                    this.date = data.date;
+                    // this.title = data.title;
+                    // this.content = data.content;
+                    // this.item.category = data.item.category;
+                    // this.date = data.date;
+                    // this.uid = data.uid;
+                    this.item = data;
                 }
             });
         },
